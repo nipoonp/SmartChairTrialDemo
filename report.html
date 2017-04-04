@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Your Reporting App</title>
+	<script type='text/javascript'>
+        var slamdata = window.SlamData = window.SlamData || {};
+        slamdata.embed = function(options) {
+            var queryParts = [];
+            if (options.permissionTokens) queryParts.push('permissionTokens=' + options.permissionTokens.join(','));
+            if (options.stylesheets && options.stylesheets.length) queryParts.push('stylesheets=' + options.stylesheets.map(encodeURIComponent).join(','));
+            var queryString = '?' + queryParts.join('&');
+            var varsParam = options.vars ? '/?vars=' + encodeURIComponent(JSON.stringify(options.vars)) : '';
+            var uri = 'http://localhost:20223/slamdata/workspace.html' + queryString;
+            var iframe = document.createElement('iframe');
+            iframe.width = iframe.height = '100%';
+            iframe.frameBorder = 10;
+            iframe.src = uri + '#' + options.deckPath + options.deckId + '/view' + varsParam;
+
+            console.log(iframe.src);
+
+            var deckElement = document.getElementById('sd-deck-' + options.deckId);
+            if (deckElement) deckElement.appendChild(iframe);
+        };
+	</script>
+	<div id='sd-deck-ec080580-8343-429a-a054-6664127ad1b4'></div>
+</head>
+<body>
+<script type='text/javascript'>
+    SlamData.embed({
+        deckPath: '/localbox/internetofme/Untitled+Workspace+1.slam/',
+        deckId: 'ec080580-8343-429a-a054-6664127ad1b4',
+        stylesheets: [],
+        // The variables for the deck(s), you can change their values here:
+        vars: {
+            "inputUserID": "thotmadhupavni5"
+        }
+    });
+</script>
+</body>
+</html>

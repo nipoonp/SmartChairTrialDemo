@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Register Facebook</title>
+
+    <script type="text/javascript" src="/JSUtils/postData.js"></script>
+
+    <!--- Site CSS -->
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/mydiv.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/grid.css">
+
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/form.css">
+    <!--- Component CSS -->
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/icon.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/button.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/card.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/label.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/image.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/reveal.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/dimmer.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/rating.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/popup.css">
+
+    <!--- Component JS -->
+    <script src="../assets/library/jquery.min.js"></script>
+    <script src="../assets/library/iframe-content.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/popup.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/dimmer.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/rating.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/transition.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/container.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/grid.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/header.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/image.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/menu.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/list.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/segment.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/icon.css">
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+    <div class="ui container">
+        <a class="active item">Home</a> <a class="item">Work</a> <a
+            class="item">Company</a> <a class="item">Careers</a>
+        <div class="right menu">
+            <div class="item">
+                <a class="ui button">Log in</a>
+            </div>
+            <div class="item">
+                <a class="ui primary button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<script>
+    // initialize and setup facebook JSUtils sdk
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '424587894551085',
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                document.getElementById('status').innerHTML = 'You are now connected to Facebook!';
+                document.getElementById('login').style.visibility = 'hidden';
+            } else if (response.status === 'not_authorized') {
+                document.getElementById('status').innerHTML = 'You are not logged in.'
+            } else {
+                document.getElementById('status').innerHTML = 'You are not logged into Facebook.';
+            }
+        });
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // login with facebook with extra permissions
+    function login() {
+        FB.login(function(response) {
+            if (response.status === 'connected') {
+                document.getElementById('status').innerHTML = 'We are connected.';
+                document.getElementById('login').style.visibility = 'hidden';
+            } else if (response.status === 'not_authorized') {
+                document.getElementById('status').innerHTML = 'We are not logged in.'
+            } else {
+                document.getElementById('status').innerHTML = 'You are not logged into Facebook.';
+            }
+        }, {scope: 'email'});
+    }
+
+    // getting basic user info
+    function getInfo() {
+        FB.api('/me', 'GET', {fields: 'id,about,age_range,birthday,devices,education,email,favorite_athletes,favorite_teams,first_name,' +
+        'gender,hometown,inspirational_people,languages,last_name,location,middle_name,name,name_format,relationship_status,' +
+        'religion,significant_other,sports,timezone,work'}, function(response) {
+            document.getElementById('status').innerHTML = "Logged in...";
+
+            var subscriptionJSON = new Object();
+            window.JSONObj = new Object();
+            subscriptionJSON.laptops = document.getElementById("laptops").checked;
+            subscriptionJSON.antiques = document.getElementById("antiques").checked;
+            subscriptionJSON.residential = document.getElementById("residential").checked;
+            subscriptionJSON.mobile = document.getElementById("mobile").checked;
+            subscriptionJSON.art = document.getElementById("art").checked;
+            subscriptionJSON.books = document.getElementById("books").checked;
+            subscriptionJSON.house = document.getElementById("house").checked;
+            subscriptionJSON.car = document.getElementById("car").checked;
+            subscriptionJSON.beauty = document.getElementById("beauty").checked;
+
+            var domainJSON = new Object();
+            window.JSONObj = new Object();
+            domainJSON.retail = document.getElementById("retail").checked;
+
+            var deviceJSON = new Object();
+            window.JSONObj = new Object();
+            deviceJSON.android = document.getElementById("android").checked;
+            deviceJSON.ios = document.getElementById("ios").checked;
+            deviceJSON.windows = document.getElementById("windows").checked;
+
+
+            var dataJSON = new Object();
+            window.JSONObj = new Object();
+            dataJSON.id = response.id;
+            dataJSON.about = response.about;
+            dataJSON.devices = response.devices;
+            dataJSON.email = response.email;
+            dataJSON.first_name = response.first_name;
+            dataJSON.gender = response.gender;
+            dataJSON.last_name = response.last_name;
+            dataJSON.location = response.location;
+            dataJSON.middle_name = response.middle_name;
+            dataJSON.name = response.name;
+            dataJSON.name_format = response.name_format;
+            dataJSON.timezone = response.timezone;
+            dataJSON.work = response.work;
+
+            dataJSON.subscriptions = subscriptionJSON;
+            dataJSON.domain = domainJSON;
+            dataJSON.device = deviceJSON;
+            dataJSON.location = document.getElementById("location").value;
+
+            postData("register", dataJSON);
+
+
+
+
+
+        });
+    }
+</script>
+
+<div class="mydiv">
+    <h2>1) Fill in personal details.</h2>
+    <div id="status"></div>
+    <button onclick="login()" id="login">Login</button>
+
+    <br> <br>
+    <h2>2) Enter the domain you are interested in.</h2>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="retail"> <label>Retail</label>
+    </div>
+
+
+
+    <br> <br>
+    <h2>3) Select the categories you are interested in.</h2>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="antiques"> <label>Antiques</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="art"> <label>Art</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="beauty"> <label>Beauty</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="books"> <label>Books</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="car"> <label>Car</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="house"> <label>House</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="laptops"> <label>Laptops</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="mobile"> <label>Mobile</label>
+    </div>
+    <br>
+
+    <div class="ui checkbox">
+        <input type="checkbox" id="residential"> <label>Residential</label>
+    </div>
+    <br>
+
+
+
+    <div class="mydiv2">
+        <h2>4) Enter the coordinates of the country you are interested
+            in.</h2>
+
+        <form class="ui large form">
+            <input type="text" placeholder="latitude,longitude" id="location">
+            <div></div>
+        </form>
+
+        <br> <br>
+        <h2>5) Enter the device type you are interested in.</h2>
+
+        <div class="ui checkbox">
+            <input type="checkbox" id="android"> <label>Android</label>
+        </div>
+        <br>
+
+        <div class="ui checkbox">
+            <input type="checkbox" id="ios"> <label>IOS</label>
+        </div>
+        <br>
+
+        <div class="ui checkbox">
+            <input type="checkbox" id="windows"> <label>Windows</label>
+        </div>
+        <br> <br>
+        <div class="ui primary button" onclick="getInfo()">Register>></div>
+    </div>
+
+</div>
+</body>
+</html>

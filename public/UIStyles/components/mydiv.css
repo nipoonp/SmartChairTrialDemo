@@ -1,0 +1,21 @@
+.mydiv {
+    top: 30%;
+    left: 20%;
+    width:40em;
+    height:60em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    background-color: #ffffff;
+    position:fixed;
+}
+
+.mydiv2 {
+    top: 30%;
+    left: 50%;
+    width:40em;
+    height:60em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: 0em; /*set to a negative number 1/2 of your width*/
+    background-color: #ffffff;
+    position:fixed;
+}

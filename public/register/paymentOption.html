@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Register Facebook</title>
+
+    <script type="text/javascript" src="/JSUtils/postData.js"></script>
+
+    <!--- Site CSS -->
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/mydiv.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/grid.css">
+
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/form.css">
+    <!--- Component CSS -->
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/icon.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/button.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/card.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/label.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/image.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/reveal.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/dimmer.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/rating.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/popup.css">
+
+    <!--- Component JS -->
+    <script src="../assets/library/jquery.min.js"></script>
+    <script src="../assets/library/iframe-content.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/popup.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/dimmer.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/rating.js"></script>
+    <script type="text/javascript" src="/UIStyles/components/transition.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/site.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/container.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/grid.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/header.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/image.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/menu.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/list.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/segment.css">
+    <link rel="stylesheet" type="text/css"
+          href="/UIStyles/components/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="/UIStyles/components/icon.css">
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+    <div class="ui container">
+        <a class="active item">Home</a> <a class="item">Work</a> <a
+            class="item">Company</a> <a class="item">Careers</a>
+        <div class="right menu">
+            <div class="item">
+                <a class="ui button">Log in</a>
+            </div>
+            <div class="item">
+                <a class="ui primary button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+    <div class="mydiv">
+
+        <h2>Select a payment option</h2>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="XCAZNVD5GTYF4">
+            <table>
+                <tr><td><input type="hidden" name="on0" value="IoMe Subscriptions">IoMe Subscriptions</td></tr><tr><td><select name="os0">
+                <option value="Free">Free : $0.00 USD - monthly</option>
+                <option value="Basic">Basic : $0.01 USD - monthly</option>
+                <option value="Premium">Premium : $0.02 USD - monthly</option>
+                <option value="Premium+">Premium+ : $0.03 USD - monthly</option>
+            </select> </td></tr>
+            </table>
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+</body>
+</html>
